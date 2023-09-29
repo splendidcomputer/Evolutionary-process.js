@@ -1,0 +1,11 @@
+function Sphere(x) {
+  let sum = 0;
+
+  for (let i = 0; i < x.length; i++) {
+    sum += x[i] ** 2;
+  }
+
+  return sum;
+}
+
+module.exports = Sphere;
