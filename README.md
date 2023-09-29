@@ -1,104 +1,83 @@
-# Genetic Algorithm Implementation in JavaScript
+# Genetic Algorithm in JavaScript
 
-This is a JavaScript implementation of a Genetic Algorithm (GA) for solving optimization problems. Genetic Algorithms are heuristic search algorithms that mimic the process of natural selection to find approximate solutions to optimization and search problems. This implementation provides a basic structure for solving optimization problems using a GA.
+Implementation of a Genetic Algorithm in JavaScript for solving optimization problems.
 
 ## Table of Contents
 
-- [Genetic Algorithm Implementation in JavaScript](#genetic-algorithm-implementation-in-javascript)
+- [Genetic Algorithm in JavaScript](#genetic-algorithm-in-javascript)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
-  - [Installation](#installation)
+  - [Dependencies](#dependencies)
+  - [Project Structure](#project-structure)
   - [Usage](#usage)
-  - [Problem Definition](#problem-definition)
-  - [GA Parameters](#ga-parameters)
-  - [Initialization](#initialization)
-  - [GA Main Loop](#ga-main-loop)
-  - [Results](#results)
+  - [Algorithm Overview](#algorithm-overview)
   - [License](#license)
 
 ## Introduction
 
-This project implements a Genetic Algorithm in JavaScript for solving optimization problems. Genetic Algorithms are inspired by the process of natural selection and are widely used for optimization problems where traditional methods may not be suitable.
+This project demonstrates the implementation of a Genetic Algorithm (GA) in JavaScript. Genetic Algorithms are a family of optimization algorithms inspired by the process of natural selection. They are commonly used to solve complex optimization and search problems.
 
-## Installation
+In this implementation, the GA is applied to an example optimization problem defined by a cost function and problem-specific parameters.
 
-1. Clone or download this repository.
+## Dependencies
 
-2. Ensure you have Node.js installed on your system.
+This project relies on the following modules and libraries:
 
-3. Install required dependencies:
+- [`mean`](https://www.npmjs.com/package/mean): For calculating the mean of an array.
+- Problem-specific modules:
+  - `Sphere.js`: Defines the cost function for the optimization problem.
+  - `GenerateRandomPosition.js`: Generates random solutions within problem-specific bounds.
+  - `RouletteWheelSelection.js`: Implements the selection mechanism for parents.
+  - `UniformCrossover.js`: Performs uniform crossover between parent solutions.
+  - `Mutate.js`: Implements mutation of solutions.
 
-   ```bash
-   npm install
-   ```
+You can install the required modules using npm:
 
-4. Run the Genetic Algorithm:
-   ```bash
-   node main.js
-   ```
+```bash
+npm install mean
+```
+
+## Project Structure
+
+The project is organized as follows:
+
+- `built-in_funcs`: Contains utility functions for mean, sum, and cumsum.
+- `Sphere.js`: Defines the cost function for the optimization problem.
+- `GenerateRandomPosition.js`: Generates random solutions within problem-specific bounds.
+- `RouletteWheelSelection.js`: Implements the selection mechanism for parents.
+- `UniformCrossover.js`: Performs uniform crossover between parent solutions.
+- `Mutate.js`: Implements mutation of solutions.
+- `main.js`: The main script that initializes and runs the Genetic Algorithm.
 
 ## Usage
 
-This implementation is intended as a starting point for solving optimization problems using a Genetic Algorithm. You can customize the cost function, problem dimensions, and GA parameters according to your specific problem.
+To run the Genetic Algorithm, execute the `main.js` script using Node.js:
 
-## Problem Definition
-
-The problem to be optimized is defined in the `problem` object:
-
-```javascript
-const problem = {
-  CostFunction: function (x) {
-    return Sphere(x); // Example cost function (you can replace this)
-  },
-  nVar: 5, // Number of variables
-  VarMin: [-10, -10, -5, -1, 5], // Minimum values for each variable
-  VarMax: [10, 10, 5, 1, 8], // Maximum values for each variable
-};
+```bash
+node main.js
 ```
 
-You should replace the `Sphere(x)` function with your own cost function. Modify `nVar`, `VarMin`, and `VarMax` to suit your problem's requirements.
+This script configures and runs the GA based on the provided problem definition and parameters. It logs the progress and results of each iteration.
 
-## GA Parameters
+## Algorithm Overview
 
-GA parameters are defined in the `params` object:
+The Genetic Algorithm in this project follows these key steps:
 
-```javascript
-const params = {
-  maxIt: 100, // Maximum number of iterations
-  nPop: 100, // Population size
-  beta: 1, // Selection pressure
-  pC: 1, // Crossover probability
-  gamma: 0.1, // Crossover parameter
-  mu: 0.02, // Mutation probability
-  sigma: 0.1, // Mutation parameter
-};
-```
+1. Problem Definition: The problem to be solved is defined, including the cost function and problem-specific parameters.
 
-You can adjust these parameters to fine-tune the GA's behavior for your specific problem.
+2. Initialization: An initial population of solutions is generated, and the best solution is initialized.
 
-## Initialization
+3. Main Loop: The GA's main loop iterates for a specified number of generations. In each iteration, the following steps occur:
 
-The GA initializes a population of random solutions within the specified variable bounds. The best solution found is tracked throughout the optimization process.
+   - Selection: Parents are selected based on their fitness using Roulette Wheel Selection.
+   - Crossover: Parents are paired and perform uniform crossover to produce offspring.
+   - Mutation: Offspring solutions undergo mutation.
+   - Evaluation: The cost of each solution is calculated.
+   - Population Update: The population is updated, and the best solution is recorded.
 
-## GA Main Loop
+4. Termination: The algorithm terminates after a specified number of iterations.
 
-The main loop of the GA consists of the following steps:
-
-1. Selection: Selects parents based on their fitness.
-
-2. Crossover: Combines pairs of parents to create offspring.
-
-3. Mutation: Introduces small random changes to the offspring.
-
-4. Evaluation: Calculates the fitness of the offspring.
-
-5. Population Update: Merges and sorts the population, keeping the best individuals.
-
-6. Iteration Information: Displays information about the current iteration.
-
-## Results
-
-The best solution found by the GA and the progression of the best cost over iterations are displayed in the console.
+5. Results: The best solution found and the cost history are logged.
 
 ## License
 
