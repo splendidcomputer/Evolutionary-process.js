@@ -79,6 +79,3 @@ The Genetic Algorithm in this project follows these key steps:
 
 5. Results: The best solution found and the cost history are logged.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
