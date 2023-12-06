@@ -1,6 +1,6 @@
 # Genetic Algorithm in JavaScript
 
-Implementation of a Genetic Algorithm in JavaScript for solving optimization problems.
+Implementation of a Genetic Algorithm in JavaScript for solving optimization problems
 
 ## Table of Contents
 
